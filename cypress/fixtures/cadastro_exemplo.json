@@ -1,0 +1,9 @@
+{
+    "nome": "Reginaldo ",
+    "sobrenome": "Filho",
+    "sexo": "M",
+    "escolaridade": "mestrado",
+    "comida": ["Carne", "Frango"],
+    "esporte": "Karate",
+    "sugestao": "Sugestao Teste"
+}

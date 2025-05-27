@@ -1,0 +1,20 @@
+[
+    {
+        "nome": "Harumy",
+        "sobrenome": "Yamamoto",
+        "sexo": "F",
+        "escolaridade": "mestrado",
+        "comida": ["Vegetariano"],
+        "esporte": "Natacao",
+        "sugestao": "Sugestao da Harus"
+    },
+    {
+        "nome": "Reginaldo",
+        "sobrenome": "Filho",
+        "sexo": "M",
+        "escolaridade": "superior",
+        "comida": ["Carne", "Frango"],
+        "esporte": "Karate",
+        "sugestao": "Sugestao do Regis"
+    }
+]
