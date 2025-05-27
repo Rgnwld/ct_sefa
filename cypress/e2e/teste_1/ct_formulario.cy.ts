@@ -7,7 +7,7 @@ describe('Formulário', () => {
     });
 
     it('Cadastro Funcional', () => {
-        cy.fixture('cadastro_exemplo').then((data) => {
+        cy.fixture('teste_1/cadastro_exemplo').then((data) => {
             cy.get('#formNome').type(data.nome);
             cy.get('#formSobrenome').type(data.sobrenome);
             cy.get(`#formSexo input[type="radio"][value="${data.sexo}"]`).click();
@@ -32,7 +32,7 @@ describe('Formulário', () => {
     });
 
     it('Multiplos Cadastros Funcionais - Alteração de Cadastro Existente', () => {
-        cy.fixture('cadastro_exemplos_multiplos').then((data) => {
+        cy.fixture('teste_1/cadastro_exemplos_multiplos').then((data) => {
             data.map((item) => {
                 cy.get('#formNome').clear().type(item.nome);
                 cy.get('#formSobrenome').clear().type(item.sobrenome);
@@ -61,7 +61,7 @@ describe('Formulário', () => {
     });
 
     it('Cadastro Não Funcional - Nome Vazio', () => {
-        cy.fixture('cadastro_exemplo').then((data) => {
+        cy.fixture('teste_1/cadastro_exemplo').then((data) => {
             const alertSpy = cy.spy();
             cy.on('window:alert', alertSpy);
 
@@ -85,7 +85,7 @@ describe('Formulário', () => {
     });
 
     it('Cadastro Não Funcional - Sobrenome Vazio', () => {
-        cy.fixture('cadastro_exemplo').then((data) => {
+        cy.fixture('teste_1/cadastro_exemplo').then((data) => {
             const alertSpy = cy.spy();
             cy.on('window:alert', alertSpy);
 
@@ -109,7 +109,7 @@ describe('Formulário', () => {
     });
 
     it('Cadastro Não Funcional - Sexo Vazio', () => {
-        cy.fixture('cadastro_exemplo').then((data) => {
+        cy.fixture('teste_1/cadastro_exemplo').then((data) => {
             const alertSpy = cy.spy();
             cy.on('window:alert', alertSpy);
 
@@ -133,7 +133,7 @@ describe('Formulário', () => {
     });
 
     it('Cadastro Não Funcional - Vegetariano', () => {
-        cy.fixture('cadastro_erro_vegetariano').then((data) => {
+        cy.fixture('teste_1/cadastro_erro_vegetariano').then((data) => {
             const alertSpy = cy.spy();
             cy.on('window:alert', alertSpy);
 
