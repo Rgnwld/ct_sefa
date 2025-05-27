@@ -149,6 +149,24 @@ describe('Livros', () => {
             });
         });
 
+        it('Criar Um Livro Sem Corpo', () => {
+            const newBook = {};
+
+            const options = {
+                method: 'POST',
+                url: `${url}`,
+                body: newBook,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
+            });
+        });
+
         it('Atualizar Livro Sem ID no Corpo', () => {
             const bookId = 1; // Altere para o ID do livro que deseja atualizar
 
@@ -237,6 +255,26 @@ describe('Livros', () => {
                 idBook: 1, // Altere para o ID do livro que deseja associar
                 url: 'https://example.com/updated_cover.jpg',
             };
+
+            const options = {
+                method: 'PUT',
+                url: `${url}/${bookId}`,
+                body: updatedBook,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
+            });
+        });
+
+        it('Atualizar Livro Sem Corpo', () => {
+            const bookId = 1; // Altere para o ID da capa que deseja testar (1-10)
+
+            const updatedBook = {};
 
             const options = {
                 method: 'PUT',

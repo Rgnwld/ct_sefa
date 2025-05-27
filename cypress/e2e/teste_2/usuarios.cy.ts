@@ -99,7 +99,7 @@ describe('Usuários', () => {
     });
 
     describe('Formas Não Esperadas', () => {
-        it('Criar Um Usuário com ID já existente', () => {
+        it('Criar Um Usuário Com ID já existente', () => {
             const newUser = {
                 id: 1,
                 userName: 'Novo usuário',
@@ -117,6 +117,24 @@ describe('Usuários', () => {
 
             cy.request(options).then((response) => {
                 expect(response.status).to.eq(403);
+            });
+        });
+
+        it('Criar Um Usuário Sem Corpo', () => {
+            const newUser = {};
+
+            const options = {
+                method: 'POST',
+                url: `${url}`,
+                body: newUser,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
             });
         });
 
@@ -191,7 +209,7 @@ describe('Usuários', () => {
         it('Atualizar Usuário Com ID do Body e Params Diferentes', () => {
             const userId = 1; // Altere para o ID da capa que deseja testar (1-10)
 
-            const updatedCover = {
+            const updatedUser = {
                 id: 2, // Altere para o ID da capa que deseja atualizar
                 userName: 'Novo usuário',
                 password: 'Nova Senha',
@@ -200,7 +218,27 @@ describe('Usuários', () => {
             const options = {
                 method: 'PUT',
                 url: `${url}/${userId}`,
-                body: updatedCover,
+                body: updatedUser,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
+            });
+        });
+
+        it('Atualizar Usuário Sem Corpo', () => {
+            const userId = 1; // Altere para o ID da capa que deseja testar (1-10)
+
+            const updatedUser = {};
+
+            const options = {
+                method: 'PUT',
+                url: `${url}/${userId}`,
+                body: updatedUser,
                 headers: {
                     'Content-Type': 'application/json',
                 },

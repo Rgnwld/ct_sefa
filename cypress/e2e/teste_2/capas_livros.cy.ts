@@ -109,7 +109,7 @@ describe('Fotos da Capa', () => {
     });
 
     describe('Formas Não Esperadas', () => {
-        it('Criar Uma Capa com ID já existente', () => {
+        it('Criar Uma Capa Com ID já existente', () => {
             const newCover = {
                 id: 1,
                 idBook: 1, // Altere para o ID do livro que deseja associar
@@ -127,8 +127,23 @@ describe('Fotos da Capa', () => {
 
             cy.request(options).then((response) => {
                 expect(response.status).to.eq(403);
-                expect(response.body).to.be.an('object');
-                expect(response.body).to.have.all.keys('id', 'title', 'dueDate', 'completed');
+            });
+        });
+
+        it('Criar Uma Capa Sem Corpo', () => {
+            const newCover = {};
+
+            const options = {
+                method: 'POST',
+                url: `${url}`,
+                body: newCover,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.eq(403);
             });
         });
 
@@ -230,6 +245,26 @@ describe('Fotos da Capa', () => {
                 idBook: 1, // Altere para o ID do livro que deseja associar
                 url: 'https://example.com/updated_cover.jpg',
             };
+
+            const options = {
+                method: 'PUT',
+                url: `${url}/${coverId}`,
+                body: updatedCover,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
+            });
+        });
+
+        it('Atualizar CAPA Sem Corpo', () => {
+            const coverId = 1; // Altere para o ID da capa que deseja atualizar
+
+            const updatedCover = {};
 
             const options = {
                 method: 'PUT',

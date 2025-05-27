@@ -94,7 +94,7 @@ describe('Autores', () => {
 
     describe('Formas Não Esperadas', () => {
         it('Criar Um Autor com ID já existente', () => {
-            const newActivity = {
+            const newAuthor = {
                 id: 1,
                 title: 'Nova Atividade',
                 dueDate: '2023-12-31T00:00:00',
@@ -104,7 +104,7 @@ describe('Autores', () => {
             const options = {
                 method: 'POST',
                 url: `${url}`,
-                body: newActivity,
+                body: newAuthor,
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -112,6 +112,24 @@ describe('Autores', () => {
 
             cy.request(options).then((response) => {
                 expect(response.status).to.eq(403);
+            });
+        });
+
+        it('Criar Um Autor Sem Corpo', () => {
+            const newAuthor = {};
+
+            const options = {
+                method: 'POST',
+                url: `${url}`,
+                body: newAuthor,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
             });
         });
 
@@ -192,6 +210,26 @@ describe('Autores', () => {
                 firstName: 'Autor Atualizado',
                 lastName: 'Sobrenome Atualizado',
             };
+
+            const options = {
+                method: 'PUT',
+                url: `${url}/${authorId}`,
+                body: updatedAuthor,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
+            });
+        });
+
+        it('Atualizar Autor Sem Corpo', () => {
+            const authorId = 1;
+
+            const updatedAuthor = {};
 
             const options = {
                 method: 'PUT',

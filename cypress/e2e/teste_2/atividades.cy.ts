@@ -91,7 +91,7 @@ describe('Atividades', () => {
     });
 
     describe('Formas Não Esperadas', () => {
-        it('Criar Atividade com ID já existente', () => {
+        it('Criar Atividade Com ID já existente', () => {
             const newActivity = {
                 id: 1,
                 title: 'Nova Atividade',
@@ -113,7 +113,24 @@ describe('Atividades', () => {
             });
         });
 
-        it('Erro ao Atualizar Atividade Sem ID no Corpo', () => {
+        it('Criar Atividade Sem Corpo', () => {
+            const newActivity = {};
+
+            const options = {
+                method: 'POST',
+                url: `${url}`,
+                body: newActivity,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.eq(403);
+            });
+        });
+
+        it('Atualizar Atividade Sem ID no Corpo', () => {
             const activityId = 1; // Altere para o ID da atividade que deseja testar (1-10)
 
             const updatedActivity = {
@@ -192,6 +209,26 @@ describe('Atividades', () => {
                 dueDate: '2023-12-31T00:00:00',
                 completed: false,
             };
+
+            const options = {
+                method: 'PUT',
+                url: `${url}/${activityId}`,
+                body: updatedActivity,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+
+            cy.request(options).then((response) => {
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
+            });
+        });
+
+        it('Atualizar Atividade Sem Corpo', () => {
+            const activityId = 1; // Altere para o ID da atividade que deseja testar (1-10)
+
+            const updatedActivity = {};
 
             const options = {
                 method: 'PUT',
