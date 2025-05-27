@@ -31,6 +31,7 @@ declare namespace Cypress {
          * @example cy.dataCy('greeting')
          */
         clearCheckboxes(value: string): Chainable<Element>;
+        // getValidation(value: string): Chainable<Element>;
     }
 }
 
@@ -44,3 +45,14 @@ Cypress.Commands.add('clearCheckboxes', (checkboxName, ...args) => {
             }
         });
 });
+
+// Cypress.Commands.add('getValidation', (validateFocus, string: typeof , ...args) => {
+//     cy.get(`input[name="${validateFocus}"]`)
+//         .should('have.length.greaterThan', 0)
+//         .its('length')
+//         .then((n) => {
+//             for (let i = 0; i < n; i++) {
+//                 cy.get(`input[name="${validationName}"]`).check();
+//             }
+//         });
+// });

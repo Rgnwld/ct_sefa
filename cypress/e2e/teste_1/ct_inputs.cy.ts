@@ -89,18 +89,6 @@ describe('Inputs', () => {
     });
 
     describe('Tabela', () => {
-        it('Selecionando Radio da Tabela', () => {
-            cy.get('#tabelaUsuarios > tbody > tr')
-                .should('have.length.greaterThan', 0)
-                .its('length')
-                .then((n) => {
-                    console.log('Número de linhas na tabela:', n);
-                    for (let i = 0; i < n; i++) {
-                        cy.get(`#tabelaUsuarios > tbody > :nth-child(${i + 1}) input[type="radio"]`).click();
-                    }
-                });
-        });
-
         it('Selecionando CheckBoxes da Tabela', () => {
             cy.get('#tabelaUsuarios > tbody > tr')
                 .should('have.length.greaterThan', 0)
@@ -109,6 +97,18 @@ describe('Inputs', () => {
                     console.log('Número de linhas na tabela:', n);
                     for (let i = 0; i < n; i++) {
                         cy.get(`#tabelaUsuarios > tbody > :nth-child(${i + 1}) input[type="checkbox"]`).click();
+                    }
+                });
+        });
+
+        it('Selecionando Radio da Tabela', () => {
+            cy.get('#tabelaUsuarios > tbody > tr')
+                .should('have.length.greaterThan', 0)
+                .its('length')
+                .then((n) => {
+                    console.log('Número de linhas na tabela:', n);
+                    for (let i = 0; i < n; i++) {
+                        cy.get(`#tabelaUsuarios > tbody > :nth-child(${i + 1}) input[type="radio"]`).click();
                     }
                 });
         });
