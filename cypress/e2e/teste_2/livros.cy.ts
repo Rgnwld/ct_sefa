@@ -125,7 +125,7 @@ describe('Livros', () => {
     });
 
     describe('Formas Não Esperadas', () => {
-        it('Criar Um Livro com ID já existente', () => {
+        it('Criar Um Livro Com ID já existente', () => {
             const newBook = {
                 id: 1,
                 title: 'Novo Livro',

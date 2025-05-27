@@ -1,6 +1,6 @@
 # Relatório de Testes Realizados
 
-Este projeto contém uma suíte de testes automatizados utilizando Cypress para validação de funcionalidades de formulários web e APIs REST públicas. Abaixo estão listados todos os testes realizados, organizados por categoria, com uma breve descrição de cada um.
+Este projeto contém uma lista de testes automatizados utilizando Cypress para validação de funcionalidades de formulários web e APIs REST. Os testes foram desenvolvidos utilizando as ferramentas **Cypress** (para automação de testes end-to-end e API) e **Insomnia** (para validação manual e exploração de endpoints REST), proporcionando maior confiabilidade e cobertura nos cenários testados. Abaixo estão listados todos os testes realizados, organizados por categoria, além uma breve descrição de cada um.
 
 ---
 
@@ -138,8 +138,14 @@ Os testes utilizam arquivos JSON na pasta `fixtures` para fornecer dados de entr
 
 -   ## **Teste_1**:
     -   Os Radio buttons da tabela não possuem o atributo "name", o que permite selecionar diversos.
+    -   A Tabela sem header e a tabela com header apresentam valores diferentes para o Usuário B;
 -   ## **Teste_2**:
     -   Rotas apresentadas não dão o código do retorno de acordo com a atividade executada:
-        -   Todas as rotas de criação, retornam o valor "200 (OK)" ao invés de "201 (Created)";
-        -   Formas de Request não esperadas retornam valores de Success (2\*\*);
-        -   Formas de Request com Corpo vazio retornam valores de Success (2\*\*);
+        -   Todas as rotas de POST, retornam o valor "200 (OK)" ao invés de "201 (Created)";
+        -   **Criação com ID já existente**: O sistema permite criar registros utilizando um ID que já existe, quando deveria retornar erro de duplicidade.
+        -   **Criação sem corpo**: Ao tentar criar um registro sem enviar um corpo na requisição, o sistema não retorna erro apropriado.
+        -   **Atualização sem ID no corpo**: O endpoint de atualização aceita requisições sem o campo ID no corpo, quando deveria exigir esse campo.
+        -   **Atualização com ID inexistente**: O sistema permite atualizar registros utilizando um ID que não existe, sem retornar erro.
+        -   **Atualização com ID do corpo e parâmetro diferentes**: O endpoint aceita atualizações onde o ID do corpo e o ID do parâmetro são diferentes, sem validação adequada.
+        -   **Atualização sem corpo**: O sistema aceita requisições de atualização sem corpo, quando deveria retornar erro.
+        -   **Exclusão de usuário inexistente**: Ao tentar excluir um usuário que não existe, o sistema não retorna erro apropriado.
