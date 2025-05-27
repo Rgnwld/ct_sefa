@@ -18,6 +18,10 @@ Para executar os testes automatizados, é necessário ter o [Node.js](https://no
     ```
 4.  **Na interface do Cypress, selecione o navegador e o teste desejado para execução.**
 
+---
+
+## Sobre o Teste
+
 Este projeto contém uma lista de testes automatizados utilizando Cypress para validação de funcionalidades de formulários web e APIs REST. Os testes foram desenvolvidos utilizando as ferramentas **Cypress** (para automação de testes end-to-end e API) e **Insomnia** (para validação manual e exploração de endpoints REST), proporcionando maior confiabilidade e cobertura nos cenários testados. Abaixo estão listados todos os testes realizados, organizados por categoria, além uma breve descrição de cada um.
 
 ---
