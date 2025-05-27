@@ -1,5 +1,23 @@
 # Relatório de Testes Realizados
 
+## Instalação e Execução dos Testes
+
+Para executar os testes automatizados, é necessário ter o [Node.js](https://nodejs.org/) instalado em sua máquina.
+
+1.  **Instale as dependências do projeto:**
+    ```bash
+    npm install
+    ```
+2.  **Instale o Cypress (caso ainda não esteja instalado):**
+    ```bash
+    npm install cypress --save-dev
+    ```
+3.  **Abra a interface gráfica do Cypress:**
+    ```bash
+    npx cypress open
+    ```
+4.  **Na interface do Cypress, selecione o navegador e o teste desejado para execução.**
+
 Este projeto contém uma lista de testes automatizados utilizando Cypress para validação de funcionalidades de formulários web e APIs REST. Os testes foram desenvolvidos utilizando as ferramentas **Cypress** (para automação de testes end-to-end e API) e **Insomnia** (para validação manual e exploração de endpoints REST), proporcionando maior confiabilidade e cobertura nos cenários testados. Abaixo estão listados todos os testes realizados, organizados por categoria, além uma breve descrição de cada um.
 
 ---
