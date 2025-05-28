@@ -170,4 +170,4 @@ Os testes utilizam arquivos JSON na pasta `fixtures` para fornecer dados de entr
         -   **Atualização com ID inexistente**: O sistema permite atualizar registros utilizando um ID que não existe, sem retornar erro.
         -   **Atualização com ID do corpo e parâmetro diferentes**: O endpoint aceita atualizações onde o ID do corpo e o ID do parâmetro são diferentes, sem validação adequada.
         -   **Atualização sem corpo**: O sistema aceita requisições de atualização sem corpo, quando deveria retornar erro.
-        -   **Exclusão de usuário inexistente**: Ao tentar excluir um usuário que não existe, o sistema não retorna erro apropriado.
+        -   **Exclusão com ID inexistente**: Ao tentar excluir um usuário que não existe, o sistema não retorna erro apropriado.

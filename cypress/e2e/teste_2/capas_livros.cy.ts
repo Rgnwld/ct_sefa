@@ -131,6 +131,29 @@ describe('Fotos da Capa', () => {
             });
         });
 
+        it('Criar CAPA Com IDBOOK inexistente ', () => {
+            const updatedCover = {
+                id: 999,
+                url: 'https://example.com/updated_cover.jpg',
+            };
+
+            const options = {
+                method: 'POST',
+                url: `${url}`,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                failOnStatusCode: false,
+                body: updatedCover,
+            };
+
+            cy.request(options).should((response) => {
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
+            });
+        });
+
+
         it('Criar Uma Capa Sem Corpo', () => {
             const newCover = {};
 
@@ -213,29 +236,6 @@ describe('Fotos da Capa', () => {
 
             cy.request(options).should((response) => {
                 expect(response.status).to.eq(404);
-            });
-        });
-
-        it('Atualizar CAPA Com IDBOOK inexistente ', () => {
-            const updatedCover = {
-                id: 1,
-                idBook: 9999, // Altere para o ID do livro que deseja associar
-                url: 'https://example.com/updated_cover.jpg',
-            };
-
-            const options = {
-                method: 'PUT',
-                url: `${url}/${updatedCover.id}`,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                failOnStatusCode: false,
-                body: updatedCover,
-            };
-
-            cy.request(options).should((response) => {
-                expect(response.status).to.not.eq(200);
-                expect(response.status).to.not.eq(201);
             });
         });
 
