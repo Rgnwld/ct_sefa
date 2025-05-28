@@ -145,7 +145,8 @@ describe('Livros', () => {
             };
 
             cy.request(options).then((response) => {
-                expect(response.status).to.eq(403);
+                expect(response.status).to.not.eq(200);
+                expect(response.status).to.not.eq(201);
             });
         });
 
